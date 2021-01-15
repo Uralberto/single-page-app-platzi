@@ -1,0 +1,57 @@
+
+# Establecemos el leguaje con el que vamos a trabajar
+language: node_js
+
+# Ahora a manejar cache. Necesitamos un sistema cache y reducir el tiempo en que se procesa la información
+cache: 
+  
+  directories: 
+    # Se genera una estructura para indicar donde está nuestro directorio 
+    - ~/.npm
+  
+# Cual va a ser la versión de node con la vamos a trabajar. En este caso la versión 12
+node_js: 
+  - '12'
+
+# Despues le decimos que utilice git. Le decimos que va a profundizar hasta el tercer nivel. Significa que va leer nuestro repositorio y va aentender como está constituido
+git: 
+  depth: 3
+
+# Los scripts a utilizar
+script:
+
+  # El comando que va compilar nuestro proyecto
+  - yarn build  
+
+deploy: 
+
+  # El provider es donde va a vivir nuestro deploy
+  provider: pages
+
+  # Edge no permite manejar un sistema de  control de las versiones y como se accede
+  edge: true
+
+  # La estructura de como vamos a estar generando cada una de las compilaciones
+  skip-cleanup: true 
+
+  # La estructura que va a manejar el historial
+  keep-history: true 
+
+  # El gitHub token que nos va a permitir conectarnos con gitHub
+  #$GITHUB_TOKEN se asigna en gitHUB
+  github-token: $GITHUB_TOKEN
+
+  # El directorio sobre el cual se va a trabajar
+  local-dir: dist/
+
+  # El target-branch  en el cual vamos a guardar los elementos 
+  target-branch: gh-pages
+
+  # Nombre commit que va a generar travis
+  commit_message: "Deploy Release"
+
+  # Sobre cual rama va a a actuar
+  on:
+    branch: master
+
+
