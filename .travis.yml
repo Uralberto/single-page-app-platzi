@@ -2,18 +2,18 @@
 # Establecemos el leguaje con el que vamos a trabajar
 language: node_js
 
-# Ahora a manejar cache. Necesitamos un sistema cache y reducir el tiempo en que se procesa la información
+# Necesitamos un sistema cache y reducir el tiempo en que se procesa la información
 cache: 
-  
+
   directories: 
     # Se genera una estructura para indicar donde está nuestro directorio 
     - ~/.npm
   
-# Cual va a ser la versión de node con la vamos a trabajar. En este caso la versión 12
+# Cual va a ser la versión de node con la que vamos a trabajar. En este caso la versión 12
 node_js: 
   - '12'
 
-# Despues le decimos que utilice git. Le decimos que va a profundizar hasta el tercer nivel. Significa que va leer nuestro repositorio y va aentender como está constituido
+# Le decimos que utilice git y que  va a profundizar hasta el tercer nivel. Significa que va leer nuestro repositorio y va a entender como está constituido
 git: 
   depth: 3
 
@@ -47,10 +47,10 @@ deploy:
   # El target-branch  en el cual vamos a guardar los elementos 
   target-branch: gh-pages
 
-  # Nombre commit que va a generar travis
+  # Nombre del commit que va a generar travis
   commit_message: "Deploy Release"
 
-  # Sobre cual rama va a a actuar
+  # La rama sobre la cual se va a actuar
   on:
     branch: master
 
